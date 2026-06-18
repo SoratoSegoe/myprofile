@@ -37,4 +37,207 @@
             background-color: var(--bg-main);
             color: var(--text-main);
             line-height: 1.9;
-            -webkit-font-smoothing: antiali
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: 0.04em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        /* 見出し */
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.05em;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title span {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--primary-light);
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        /* ヘッダー */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 85px;
+        }
+
+        .logo {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.15em;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-light);
+        }
+
+        /* ヒーローセクション（完全センター配置） */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f0f5fa 0%, #ffffff 100%);
+            padding-top: 85px;
+            text-align: center;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* タイトルの不自然な改行を防ぐ調整 */
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.6;
+            color: var(--primary);
+            margin-bottom: 35px;
+        }
+
+        .hero-title span {
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-sub);
+            max-width: 850px;
+            margin: 0 auto 45px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+        
+        .hero-subtitle span {
+            display: inline-block;
+        }
+
+        /* SNSリンクエリア */
+        .socials-box {
+            background: var(--bg-main);
+            padding: 25px 40px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(16, 42, 84, 0.05);
+            display: inline-block;
+        }
+
+        .socials-title {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+        }
+
+        .hero-socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icon {
+            width: 46px;
+            height: 46px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.15rem;
+            background: var(--bg-main);
+        }
+
+        .social-icon:hover {
+            border-color: var(--primary-light);
+            color: var(--bg-main);
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        /* プロフィール ＆ 実績レイアウト */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .profile-text-content h3 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .profile-title-sub {
+            font-size: 1rem;
+            color: var(--primary-light);
+            margin-bottom: 35px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .profile-bio {
+            color: var(--text-main);
+            font-size: 1rem
