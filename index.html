@@ -124,7 +124,7 @@
             color: var(--primary-light);
         }
 
-        /* ヒーローセクション（完全センター配置） */
+        /* ヒーローセクション */
         #home {
             min-height: 100vh;
             display: flex;
@@ -145,7 +145,6 @@
             justify-content: center;
         }
 
-        /* タイトルの不自然な改行を防ぐ調整 */
         .hero-title {
             font-family: var(--font-serif);
             font-size: 2.6rem;
@@ -167,7 +166,7 @@
             font-weight: 400;
             line-height: 1.8;
         }
-        
+       
         .hero-subtitle span {
             display: inline-block;
         }
@@ -215,11 +214,11 @@
             transform: translateY(-3px);
         }
 
-        /* プロフィール ＆ 実績レイアウト */
+        /* プロフィールレイアウト（テキストと写真の比率を適度なバランスに修正） */
         .profile-grid {
             display: grid;
-            grid-template-columns: 1.1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
             align-items: start;
         }
 
@@ -278,10 +277,13 @@
             margin-bottom: 0;
         }
 
-        /* 実績ギャラリー（大1枚、小2枚） */
+        /*
+           実績ギャラリー（最初の「左1枚・右2枚」のレイアウト）
+           適度なサイズを保ちつつ、見切れ防止の調整を加えています
+        */
         .gallery-grid {
             display: grid;
-            grid-template-columns: 1.8fr 1fr;
+            grid-template-columns: 1.5fr 1fr;
             gap: 15px;
             position: sticky;
             top: 130px;
@@ -290,30 +292,35 @@
         .gallery-item {
             position: relative;
             overflow: hidden;
-            background: #e2e8f0;
-            aspect-ratio: 4/3;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            background: var(--bg-sub);
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
+            /* 枠を埋めつつ、人物の顔が切れないよう「上部中央」を基準に配置 */
             object-fit: cover;
+            object-position: center top;
+            display: block;
             filter: grayscale(100%) brightness(0.95);
             transition: var(--transition);
+        }
+
+        /* 右側の小さな写真を綺麗な正方形に固定し、過度な見切れを防ぐ */
+        .gallery-item:not(.large) {
+            aspect-ratio: 1 / 1;
+        }
+
+        /* 左側の大きな写真は右側2枚の高さに合わせて自動的にスパンする */
+        .gallery-item.large {
+            grid-row: span 2;
         }
 
         .gallery-item:hover img {
             filter: grayscale(0%) brightness(1);
             transform: scale(1.02);
-        }
-
-        .gallery-item.large {
-            grid-row: span 2;
-            aspect-ratio: auto;
-            height: 100%;
-            min-height: 480px;
         }
 
         /* お問い合わせフォーム */
@@ -414,7 +421,7 @@
             }
             .gallery-grid {
                 position: static;
-                max-width: 600px;
+                max-width: 550px; /* スマホ・タブレット表示時も適度なサイズに制御 */
                 margin: 0 auto;
             }
             .hero-title {
@@ -475,7 +482,7 @@
                     <span>臨床医学から公衆衛生、そしてフィットネスの実践者として</span>
                     <span>挑む健康寿命延伸へのアプローチ</span>
                 </p>
-                
+               
                 <div class="socials-box">
                     <p class="socials-title">各種SNSはこちら</p>
                     <div class="hero-socials">
@@ -492,17 +499,17 @@
     <section id="about" class="section-padding">
         <div class="container">
             <div class="profile-grid">
-                
+               
                 <div class="profile-text-content">
                     <h2 class="section-title"><span>Biography</span>Profile</h2>
                     <h3>瀬越 空人</h3>
                     <p class="profile-title-sub">耳鼻咽喉科専門医 ・ 健康スポーツ認定医</p>
-                    
+                   
                     <p class="profile-bio">医師として診療に携わる傍ら、公衆衛生を専門に学んでおり、「運動をすることで人の心と体が豊かになり、健康寿命が延伸される世界へ」をテーマに活動しています。</p>
                     <p class="profile-bio">臨床現場では、一般耳鼻科診療と頭頸部癌治療を行っていた一方で、多くの生活習慣病や健康課題は、病院の診察室だけでは解決できないことも実感してきました。</p>
                     <p class="profile-bio">そこで現在は慶應義塾大学大学院にて公衆衛生学を学びながら、運動疫学、行動科学、予防医学を軸に、健康寿命延伸や行動変容に関する研究・発信・事業構想に取り組んでいます。</p>
                     <p class="profile-bio">一個人としても運動を愛しており、筋力トレーニングや持久系スポーツを日常的に実践しています。2024年にはBest Body Japan日本大会に出場し、フィットネスを通じた健康づくりの可能性を探求しています。</p>
-                    
+                   
                     <div class="cv-box">
                         <ul class="cv-list">
                             <li>耳鼻咽喉科専門医</li>
@@ -515,16 +522,16 @@
                         </ul>
                     </div>
                 </div>
-                
+               
                 <div class="gallery-grid">
                     <div class="gallery-item large">
-                        <img src="segoe1.jpeg" alt="瀬越空人 プロフィール写真">
+                        <img src="IMG_1.jpeg" alt="瀬越空人 プロフィール写真1">
                     </div>
                     <div class="gallery-item">
-                        <img src="segoe2.jpeg" alt="瀬越空人 フィットネス活動風景1">
+                        <img src="IMG_2.jpeg" alt="瀬越空人 フィットネス活動風景1">
                     </div>
                     <div class="gallery-item">
-                        <img src="segoe3.jpeg" alt="瀬越空人 フィットネス活動風景2">
+                        <img src="IMG_3.jpeg" alt="瀬越空人 フィットネス活動風景2">
                     </div>
                 </div>
 
@@ -535,7 +542,7 @@
     <section id="contact" class="section-padding contact-section-bg">
         <div class="container">
             <h2 class="section-title" style="text-align: center;"><span>Get In Touch</span>Contact</h2>
-            
+           
             <div class="contact-form">
                 <form action="https://formsubmit.co/jesse.soratosegoe@gmail.com" method="POST">
                     <input type="hidden" name="_captcha" value="false">
@@ -551,12 +558,12 @@
                             <input type="email" name="email" required placeholder="example@email.com">
                         </div>
                     </div>
-                    
+                   
                     <div class="form-group">
                         <label class="form-label">メッセージ</label>
                         <textarea name="message" rows="6" required placeholder="ご質問やご相談内容をご記入ください"></textarea>
                     </div>
-                    
+                   
                     <div class="submit-btn-wrapper">
                         <button type="submit">送信する</button>
                     </div>
