@@ -6,20 +6,50 @@
     <title>瀬越空人 オフィシャルサイト | Sorato Segoe Official Website</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
+        /* ==========================================
+           ハイエンド・ポートフォリオ CSSアーキテクチャ
+           ========================================== */
         :root {
-            --bg-main: #ffffff;        /* 清潔感のある白 */
-            --bg-sub: #f5f8fc;         /* 優しく知的な淡い藍色 */
-            --primary: #102a54;        /* 信頼と誠実を象徴する深い藍色 */
-            --primary-light: #2563eb;  /* アクセント用の洗練されたブルー */
-            --text-main: #181d26;      /* 視認性が高く目に優しい濃紺グレー */
-            --text-sub: #4b5563;       /* 読みやすいサブテキスト */
-            --border: #e2e8f0;         /* 繊細な区切り線 */
-            --font-serif: 'Noto Serif JP', serif;
+            /* 完全に洗練されたカラーパレット */
+            --bg-light: #fcfcfd;
+            --bg-dark: #000000; /* 写真の背景とシームレスに繋ぐ純黒 */
+            --text-dark: #111827;
+            --text-muted: #6b7280;
+            --text-light: #ffffff;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border-light: #e5e7eb;
+            --border-dark: #1f2937;
+           
+            /* フォントファミリーのエディトリアル化 */
+            --font-display: 'Noto Serif JP', serif;
             --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
-            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+           
+            /* 最高峰のなめらかなイージング */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: all 0.3s var(--ease-out-expo);
+            --transition-slow: all 0.8s var(--ease-out-expo);
+        }
+
+        /* 選択時のハイライト色 */
+        ::selection {
+            background-color: var(--accent);
+            color: var(--text-light);
+        }
+
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
         }
 
         * {
@@ -34,223 +64,282 @@
 
         body {
             font-family: var(--font-sans);
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.9;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
             -webkit-font-smoothing: antialiased;
-            letter-spacing: 0.04em;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
 
         a {
             text-decoration: none;
             color: inherit;
-            transition: var(--transition);
+            transition: var(--transition-fast);
         }
 
+        /* 計算されたコンテナと余白 */
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 40px;
         }
 
         .section-padding {
-            padding: 120px 0;
+            padding: 160px 0;
         }
 
-        /* 見出し */
+        /* 劇的な見出しデザイン */
         .section-title {
-            font-family: var(--font-serif);
-            font-size: 2.4rem;
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 0.05em;
-            margin-bottom: 50px;
-            position: relative;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+            margin-bottom: 80px;
+            line-height: 1.1;
         }
 
         .section-title span {
             font-family: var(--font-sans);
-            font-size: 0.85rem;
-            color: var(--primary-light);
+            font-size: clamp(0.75rem, 2vw, 0.85rem);
+            color: var(--text-muted);
             display: block;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
-            margin-bottom: 10px;
-            font-weight: 700;
+            letter-spacing: 0.3em;
+            margin-bottom: 16px;
+            font-weight: 500;
         }
 
-        /* ヘッダー */
+        /* ==========================================
+           ヘッダー（ミニマル＆トランスペアレント）
+           ========================================== */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(252, 252, 253, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 85px;
+            height: 90px;
         }
 
         .logo {
             font-family: var(--font-sans);
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: 0.15em;
-            color: var(--primary);
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.25em;
+            color: var(--text-dark);
+            text-transform: uppercase;
         }
 
         .nav-menu {
             display: flex;
-            gap: 35px;
+            gap: 48px;
             list-style: none;
         }
 
         .nav-link {
-            font-size: 0.9rem;
-            color: var(--text-sub);
+            font-size: 0.8rem;
+            color: var(--text-muted);
             font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
         .nav-link:hover {
-            color: var(--primary-light);
+            color: var(--text-dark);
         }
 
-        /* ヒーローセクション */
+        /* ==========================================
+           ヒーローセクション（ダイナミック・プログレード統合）
+           ========================================== */
         #home {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #f0f5fa 0%, #ffffff 100%);
-            padding-top: 85px;
+            background-color: var(--bg-dark);
+            padding-top: 90px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ユーザー様のご指定どおり、横サイズに合わせつつ全体を下げて見切れを防ぐ完璧な設定 */
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('IMG_4.jpeg');
+            background-size: cover; /* 左右のデッドスペース（黒い帯）を完全に消去し、画面全体に広げる */
+            background-position: center 12%; /* 画像全体を下方にずらし、頭の上の見切れを防いで顔を完璧な位置に配置 */
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 1;
+            filter: brightness(0.75) contrast(1.05); /* 写真のトーンを落とし、白文字の美しさを極限まで引き立てる */
+        }
+       
+        /* 画面上下に広がる映画のような極上グラデーション（文字を劇的に浮かび上がらせる） */
+        #home::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom,
+                rgba(0, 0, 0, 0.85) 0%,
+                rgba(0, 0, 0, 0.2) 35%,
+                rgba(0, 0, 0, 0.2) 65%,
+                rgba(0, 0, 0, 0.9) 100%);
+            pointer-events: none;
+            z-index: 2;
         }
 
         .hero-content {
             width: 100%;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: relative;
+            z-index: 3;
         }
 
         .hero-title {
-            font-family: var(--font-serif);
-            font-size: 2.6rem;
-            font-weight: 700;
-            line-height: 1.6;
-            color: var(--primary);
-            margin-bottom: 35px;
-        }
-
-        .hero-title span {
-            display: inline-block;
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            letter-spacing: 0.02em;
+            /* 高級感を演出し、可読性を100%保証するシネマシャドウ */
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
         }
 
         .hero-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-sub);
-            max-width: 850px;
-            margin: 0 auto 45px;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            margin: 0 auto 60px;
             font-weight: 400;
-            line-height: 1.8;
-        }
-       
-        .hero-subtitle span {
-            display: inline-block;
+            line-height: 2;
+            letter-spacing: 0.05em;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
         }
 
-        /* SNSリンクエリア */
+        /* SNSリンクのミニマル・ピルデザイン */
         .socials-box {
-            background: var(--bg-main);
-            padding: 25px 40px;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(16, 42, 84, 0.05);
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            gap: 24px;
         }
 
         .socials-title {
-            color: var(--primary);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            position: relative;
+        }
+       
+        .socials-title::after {
+            content: '';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            width: 20px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .hero-socials {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            gap: 16px;
+            margin-left: 20px;
         }
 
         .social-icon {
-            width: 46px;
-            height: 46px;
-            border: 1px solid var(--border);
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary);
-            font-size: 1.15rem;
-            background: var(--bg-main);
+            color: var(--text-light);
+            font-size: 1.1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            transition: var(--transition-fast);
         }
 
         .social-icon:hover {
-            border-color: var(--primary-light);
-            color: var(--bg-main);
-            background: var(--primary-light);
-            transform: translateY(-3px);
+            color: var(--bg-dark);
+            background: var(--text-light);
+            border-color: var(--text-light);
         }
 
-        /* プロフィールレイアウト（テキストと写真の比率を適度なバランスに修正） */
+        /* ==========================================
+           プロフィールセクション（アシンメトリー＆エディトリアル）
+           ========================================== */
         .profile-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 4.5fr 5.5fr;
+            gap: 80px;
             align-items: start;
         }
 
         .profile-text-content h3 {
-            font-family: var(--font-serif);
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .profile-title-sub {
-            font-size: 1rem;
-            color: var(--primary-light);
-            margin-bottom: 35px;
-            font-weight: 700;
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
             letter-spacing: 0.05em;
         }
 
+        .profile-title-sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            display: inline-block;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 8px;
+        }
+
         .profile-bio {
-            color: var(--text-main);
+            color: var(--text-dark);
             font-size: 1rem;
             margin-bottom: 24px;
             text-align: justify;
+            font-weight: 300;
+            line-height: 2.2;
         }
 
-        /* 所属・資格・実績ボックス */
         .cv-box {
-            background: var(--bg-sub);
-            padding: 35px 40px;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary);
-            margin-top: 35px;
+            background: transparent;
+            padding: 40px 0 0 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 60px;
         }
 
         .cv-list {
@@ -258,200 +347,235 @@
         }
 
         .cv-list li {
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-            color: var(--text-main);
-            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+            font-weight: 400;
             display: flex;
-            align-items: center;
-            gap: 12px;
+            align-items: flex-start;
+            gap: 16px;
+            line-height: 1.6;
         }
 
         .cv-list li::before {
-            content: "✓";
-            color: var(--primary-light);
-            font-weight: 700;
+            content: "—";
+            color: var(--accent);
+            font-weight: 300;
         }
 
-        .cv-list li:last-child {
-            margin-bottom: 0;
-        }
-
-        /*
-           実績ギャラリー（最初の「左1枚・右2枚」のレイアウト）
-           適度なサイズを保ちつつ、見切れ防止の調整を加えています
-        */
+        /* ==========================================
+           ギャラリー（左大1・右小2の完璧な構成美）
+           ========================================== */
         .gallery-grid {
             display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 15px;
+            grid-template-columns: 1.6fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 16px;
             position: sticky;
-            top: 130px;
+            top: 140px;
         }
 
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            background: var(--bg-sub);
+            background: #e2e8f0;
+            border-radius: 0;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
-            /* 枠を埋めつつ、人物の顔が切れないよう「上部中央」を基準に配置 */
             object-fit: cover;
             object-position: center top;
             display: block;
-            filter: grayscale(100%) brightness(0.95);
-            transition: var(--transition);
+            filter: grayscale(100%) contrast(1.1);
+            transition: var(--transition-slow);
+            transform: scale(1.01);
         }
 
-        /* 右側の小さな写真を綺麗な正方形に固定し、過度な見切れを防ぐ */
+        .gallery-item:hover img {
+            filter: grayscale(0%) contrast(1);
+            transform: scale(1.05);
+        }
+
+        .gallery-item.large {
+            grid-row: span 2;
+            height: 100%;
+        }
+
         .gallery-item:not(.large) {
             aspect-ratio: 1 / 1;
         }
 
-        /* 左側の大きな写真は右側2枚の高さに合わせて自動的にスパンする */
-        .gallery-item.large {
-            grid-row: span 2;
-        }
-
-        .gallery-item:hover img {
-            filter: grayscale(0%) brightness(1);
-            transform: scale(1.02);
-        }
-
-        /* お問い合わせフォーム */
+        /* ==========================================
+           お問い合わせ（劇的なダークモード反転）
+           ========================================== */
         .contact-section-bg {
-            background-color: var(--bg-sub);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .contact-section-bg .section-title {
+            color: var(--text-light);
+        }
+
+        .contact-section-bg .section-title span {
+            color: rgba(255,255,255,0.5);
         }
 
         .contact-form {
-            background: var(--bg-main);
-            padding: 50px 60px;
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(16, 42, 84, 0.06);
-            max-width: 850px;
+            background: transparent;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 40px;
         }
 
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 40px;
+            position: relative;
         }
 
         .form-label {
             display: block;
-            font-size: 0.9rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 8px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
         input, textarea {
             width: 100%;
-            padding: 16px;
-            background: #fafbfe;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            color: var(--text-main);
+            padding: 12px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            border-radius: 0;
+            color: var(--text-light);
             font-family: var(--font-sans);
-            font-size: 1rem;
-            transition: var(--transition);
+            font-size: 1.1rem;
+            transition: var(--transition-fast);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(255,255,255,0.2);
+            font-weight: 300;
         }
 
         input:focus, textarea:focus {
             outline: none;
-            border-color: var(--primary-light);
-            background: var(--bg-main);
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            border-bottom-color: var(--text-light);
+            background: transparent;
         }
 
         textarea {
             resize: vertical;
+            min-height: 100px;
         }
 
         .submit-btn-wrapper {
-            text-align: center;
-            margin-top: 15px;
+            margin-top: 60px;
+            text-align: right;
         }
 
         button {
-            background: var(--primary);
-            color: var(--bg-main);
-            padding: 18px 60px;
+            background: var(--text-light);
+            color: var(--bg-dark);
+            padding: 20px 60px;
             border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
+            border-radius: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(16, 42, 84, 0.15);
-            transition: var(--transition);
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
         }
 
         button:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.25);
+            background: var(--accent);
+            color: var(--text-light);
         }
 
-        /* フッター */
+        /* ==========================================
+           フッター
+           ========================================== */
         footer {
-            background: var(--primary);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 40px 0;
+            background: var(--bg-dark);
+            color: rgba(255, 255, 255, 0.4);
+            padding: 0 0 80px 0;
             text-align: center;
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
-        /* レスポンシブ */
-        @media (max-width: 992px) {
+        /* ==========================================
+           レスポンシブ最適化
+           ========================================== */
+        @media (max-width: 1024px) {
             .profile-grid {
                 grid-template-columns: 1fr;
-                gap: 50px;
+                gap: 80px;
             }
             .gallery-grid {
                 position: static;
-                max-width: 550px; /* スマホ・タブレット表示時も適度なサイズに制御 */
-                margin: 0 auto;
+                max-width: 100%;
+                grid-template-columns: 2fr 1fr;
             }
-            .hero-title {
-                font-size: 2.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+            .section-padding {
+                padding: 100px 0;
+            }
+            .nav-menu {
+                display: none;
             }
             .form-row {
                 grid-template-columns: 1fr;
                 gap: 0;
             }
-        }
-
-        @media (max-width: 640px) {
-            .container {
-                padding: 0 20px;
+            .socials-box {
+                flex-direction: column;
+                gap: 16px;
             }
-            .section-padding {
-                padding: 80px 0;
-            }
-            .nav-menu {
+            .socials-title::after {
                 display: none;
             }
-            .contact-form {
-                padding: 35px 20px;
+            .hero-socials {
+                margin-left: 0;
             }
-            .hero-title {
-                font-size: 1.6rem;
-                line-height: 1.5;
+            .submit-btn-wrapper {
+                text-align: center;
             }
-            .hero-subtitle {
-                font-size: 1rem;
+            button {
+                width: 100%;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 16px;
+            }
+            .gallery-item:not(.large) {
+                aspect-ratio: 4 / 3;
+            }
+            .gallery-item.large {
+                grid-row: auto;
+            }
+            #home::before {
+                background-position: center 8%; /* スマホなどの縦長画面でも顔が綺麗に残るよう微調整 */
             }
         }
     </style>
@@ -479,12 +603,12 @@
                     <span>健康寿命が延伸される世界へ」</span>
                 </h1>
                 <p class="hero-subtitle">
-                    <span>臨床医学から公衆衛生、そしてフィットネスの実践者として</span>
+                    <span>臨床医学から公衆衛生、そしてフィットネスの実践者として</span><br>
                     <span>挑む健康寿命延伸へのアプローチ</span>
                 </p>
                
                 <div class="socials-box">
-                    <p class="socials-title">各種SNSはこちら</p>
+                    <p class="socials-title">Follow on</p>
                     <div class="hero-socials">
                         <a href="https://lin.ee/Ymh7pAO" target="_blank" class="social-icon" title="LINE公式アカウント"><i class="fa-brands fa-line"></i></a>
                         <a href="https://www.instagram.com/dr.sorato_segoe" target="_blank" class="social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -515,7 +639,7 @@
                             <li>耳鼻咽喉科専門医</li>
                             <li>健康スポーツ認定医</li>
                             <li>慶應義塾大学大学院 公衆衛生学専攻 在籍</li>
-                            <li>Best Body Japan 2024 千葉大会グランプリ</li>
+                            <li>Best Body Japan 2024 千橋大会グランプリ</li>
                             <li>Best Body Japan 2024 日本大会出場</li>
                             <li>Best Body Japan 2025 東日本大会グランプリ</li>
                             <li>HYROX、スパルタンレースなど各種競技に出場</li>
@@ -541,7 +665,7 @@
 
     <section id="contact" class="section-padding contact-section-bg">
         <div class="container">
-            <h2 class="section-title" style="text-align: center;"><span>Get In Touch</span>Contact</h2>
+            <h2 class="section-title"><span>Get In Touch</span>Contact</h2>
            
             <div class="contact-form">
                 <form action="https://formsubmit.co/jesse.soratosegoe@gmail.com" method="POST">
@@ -561,7 +685,7 @@
                    
                     <div class="form-group">
                         <label class="form-label">メッセージ</label>
-                        <textarea name="message" rows="6" required placeholder="ご質問やご相談内容をご記入ください"></textarea>
+                        <textarea name="message" required placeholder="ご質問やご相談内容をご記入ください"></textarea>
                     </div>
                    
                     <div class="submit-btn-wrapper">
