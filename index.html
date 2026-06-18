@@ -126,7 +126,7 @@
             color: var(--primary-light);
         }
 
-        /* ヒーローセクション（完全なセンター配置に修正） */
+        /* ヒーローセクション（完全センター配置） */
         #home {
             min-height: 100vh;
             display: flex;
@@ -139,7 +139,7 @@
 
         .hero-content {
             width: 100%;
-            max-width: 950px;
+            max-width: 1000px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -147,24 +147,32 @@
             justify-content: center;
         }
 
+        /* タイトルの不自然な改行を防ぐ調整 */
         .hero-title {
             font-family: var(--font-serif);
             font-size: 2.6rem;
             font-weight: 700;
             line-height: 1.6;
             color: var(--primary);
-            margin-bottom: 30px;
-            word-break: keep-all; /* 単語の途中での不自然な改行を防ぐ */
-            overflow-wrap: break-word;
+            margin-bottom: 35px;
+        }
+
+        /* 文字が1文字だけ落ちるのを防ぐ魔法の記述 */
+        .hero-title span {
+            display: inline-block;
         }
 
         .hero-subtitle {
             font-size: 1.15rem;
             color: var(--text-sub);
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto 45px;
             font-weight: 400;
-            line-height: 1.7;
+            line-height: 1.8;
+        }
+        
+        .hero-subtitle span {
+            display: inline-block;
         }
 
         /* SNSリンクエリア */
@@ -435,7 +443,11 @@
                 padding: 35px 20px;
             }
             .hero-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+                line-height: 1.5;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
             }
         }
     </style>
@@ -460,8 +472,15 @@
     <section id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">「運動をすることで人の心と体が豊かになり、健康寿命が延伸される世界へ」</h1>
-                <p class="hero-subtitle">臨床医学から公衆衛生、そしてフィットネスの実践者として挑む健康寿命延伸へのアプローチ</p>
+                <!-- 意図した通りの美しい2行に分割し、不自然な文字ちぎれを完全にブロック -->
+                <h1 class="hero-title">
+                    <span>「運動をすることで人の心と体が豊かになり、</span><br>
+                    <span>健康寿命が延伸される世界へ」</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span>臨床医学から公衆衛生、そしてフィットネスの実践者として</span>
+                    <span>挑む健康寿命延伸へのアプローチ</span>
+                </p>
                 
                 <div class="socials-box">
                     <p class="socials-title">各種SNSはこちら</p>
@@ -505,7 +524,7 @@
                     </div>
                 </div>
                 
-                <!-- 実績フォトギャラリー（大1枚、小2枚） -->
+                <!-- 実績フォトギャラリー（大1枚、小2枚。通常モノクロ、ホバーでカラー） -->
                 <div class="gallery-grid">
                     <div class="gallery-item large">
                         <img src="large.jpg" alt="実績画像 大">
