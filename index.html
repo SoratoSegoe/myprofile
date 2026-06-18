@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>瀬越空人 オフィシャルサイト | Sorato Segoe Official Website</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
     <style>
         :root {
-            --bg-main: #ffffff;        /* 清潔感のある白 */
-            --bg-sub: #f5f8fc;         /* 優しく知的な淡い藍色 */
-            --primary: #102a54;        /* 信頼と誠実を象徴する深い藍色 */
-            --primary-light: #2563eb;  /* アクセント用の洗練されたブルー */
-            --text-main: #181d26;      /* 視認性が高く目に優しい濃紺グレー */
-            --text-sub: #4b5563;       /* 読みやすいサブテキスト */
-            --border: #e2e8f0;         /* 繊細な区切り線 */
+            --bg-main: #ffffff;
+            --bg-sub: #f5f8fc;
+            --primary: #102a54;
+            --primary-light: #2563eb;
+            --text-main: #181d26;
+            --text-sub: #4b5563;
+            --border: #e2e8f0;
             --font-serif: 'Noto Serif JP', serif;
             --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -35,3 +38,73 @@
         body {
             font-family: var(--font-sans);
             background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.9;
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: 0.04em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        /* 見出し */
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.05em;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title span {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--primary-light);
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        /* ヘッダー */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 85px;
+        }
+
+        .logo {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing
