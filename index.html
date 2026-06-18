@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>瀬越空人 オフィシャルサイト | Sorato Segoe Official Website</title>
-    <!-- Google Fonts: 医師としての信頼感を醸し出す明朝体と、読みやすいゴシック体を導入 -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
     <style>
         :root {
             --bg-main: #ffffff;        /* 清潔感のある白 */
-            --bg-sub: #f5f8fc;         /* 優しく知的な淡い藍色（背景用） */
+            --bg-sub: #f5f8fc;         /* 優しく知的な淡い藍色 */
             --primary: #102a54;        /* 信頼と誠実を象徴する深い藍色 */
             --primary-light: #2563eb;  /* アクセント用の洗練されたブルー */
             --text-main: #181d26;      /* 視認性が高く目に優しい濃紺グレー */
@@ -38,7 +38,7 @@
             font-family: var(--font-sans);
             background-color: var(--bg-main);
             color: var(--text-main);
-            line-height: 1.9; /* 中高年層にも読みやすいゆったりした行間 */
+            line-height: 1.9;
             -webkit-font-smoothing: antialiased;
             letter-spacing: 0.04em;
         }
@@ -60,7 +60,7 @@
             padding: 120px 0;
         }
 
-        /* 視認性と説得力を両立させた見出し */
+        /* 見出し */
         .section-title {
             font-family: var(--font-serif);
             font-size: 2.4rem;
@@ -126,28 +126,36 @@
             color: var(--primary-light);
         }
 
-        /* ヒーローセクション（明るく爽やかに） */
+        /* ヒーローセクション（完全なセンター配置に修正） */
         #home {
-            min-height: 95vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #f0f5fa 0%, #ffffff 100%);
             padding-top: 85px;
+            text-align: center;
         }
 
         .hero-content {
-            text-align: center;
+            width: 100%;
             max-width: 950px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-title {
             font-family: var(--font-serif);
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 700;
-            line-height: 1.5;
+            line-height: 1.6;
             color: var(--primary);
             margin-bottom: 30px;
+            word-break: keep-all; /* 単語の途中での不自然な改行を防ぐ */
+            overflow-wrap: break-word;
         }
 
         .hero-subtitle {
@@ -156,6 +164,7 @@
             max-width: 800px;
             margin: 0 auto 45px;
             font-weight: 400;
+            line-height: 1.7;
         }
 
         /* SNSリンクエリア */
@@ -264,7 +273,7 @@
             margin-bottom: 0;
         }
 
-        /* 実績ギャラリー（大1枚、小2枚／ホバーでカラー） */
+        /* 実績ギャラリー（大1枚、小2枚） */
         .gallery-grid {
             display: grid;
             grid-template-columns: 1.8fr 1fr;
@@ -286,12 +295,10 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* 通常は上品なモノクロ、少し柔らかく表現 */
             filter: grayscale(100%) brightness(0.95);
             transition: var(--transition);
         }
 
-        /* カーソルを合わせた時に美しくカラー化 */
         .gallery-item:hover img {
             filter: grayscale(0%) brightness(1);
             transform: scale(1.02);
@@ -304,7 +311,7 @@
             min-height: 480px;
         }
 
-        /* つい問い合わせしたくなる上品なコンタクトフォーム */
+        /* お問い合わせフォーム */
         .contact-section-bg {
             background-color: var(--bg-sub);
         }
@@ -394,7 +401,7 @@
             letter-spacing: 0.05em;
         }
 
-        /* レスポンシブ（スマホ・タブレット対応） */
+        /* レスポンシブ */
         @media (max-width: 992px) {
             .profile-grid {
                 grid-template-columns: 1fr;
@@ -422,13 +429,13 @@
                 padding: 80px 0;
             }
             .nav-menu {
-                display: none; /* スマホ時はナビをシンプルに非表示 */
+                display: none;
             }
             .contact-form {
                 padding: 35px 20px;
             }
             .hero-title {
-                font-size: 1.7rem;
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -453,8 +460,8 @@
     <section id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">「運動をすることで人の心と体が豊かになり、<br>健康寿命が延伸される世界へ」</h1>
-                <p class="hero-subtitle">臨床医学から公衆衛生、そしてフィットネスの実践者として挑む健康寿命延伸への<span style="white-space: nowrap;">アプローチ</span></p>
+                <h1 class="hero-title">「運動をすることで人の心と体が豊かになり、健康寿命が延伸される世界へ」</h1>
+                <p class="hero-subtitle">臨床医学から公衆衛生、そしてフィットネスの実践者として挑む健康寿命延伸へのアプローチ</p>
                 
                 <div class="socials-box">
                     <p class="socials-title">各種SNSはこちら</p>
@@ -498,17 +505,14 @@
                     </div>
                 </div>
                 
-                <!-- 実績フォトギャラリー（大1枚、小2枚。通常白黒、ホバーでカラー） -->
+                <!-- 実績フォトギャラリー（大1枚、小2枚） -->
                 <div class="gallery-grid">
-                    <!-- 大サイズ写真（縦長の写真が美しく収まります） -->
                     <div class="gallery-item large">
                         <img src="large.jpg" alt="実績画像 大">
                     </div>
-                    <!-- 小サイズ写真1 -->
                     <div class="gallery-item">
                         <img src="small1.jpg" alt="実績画像 小1">
                     </div>
-                    <!-- 小サイズ写真2 -->
                     <div class="gallery-item">
                         <img src="small2.jpg" alt="実績画像 小2">
                     </div>
